@@ -35,17 +35,18 @@ fetchCountries(name)
       if (country.length === 1) {
         listEl.insertAdjacentHTML('beforeend', countryList(country))
         cardEl.insertAdjacentHTML('beforeend', countryInfo(country))
+        
       } else if (country.length > 10) {
         Notify.info('Too many matches found. Please enter a more specific name');
         return;      
     } else {
-        listEl.insertAdjacentHTML('beforeend', countryList(country))
+        listEl.insertAdjacentHTML('beforeend', countryList(country));
+
       }
     })
     .catch(() => { });
+    
 }
-
-
 
 // додаємо результат пошуку країн (список:прапора та назви країни)
   function countryList(country) {
@@ -59,10 +60,11 @@ fetchCountries(name)
             `
       })
       .join('')
-    return markup
+    return markup;
+
   }
 // додаємо результат пошуку однієї краін (список:'countryList = (прапор, назва) ' + столиця, населення і мови.)
-  function countryInfo(country) {
+function countryInfo(country) {
     const markup = country
       .map(({ capital, population, languages }) => {
         return `
@@ -76,3 +78,4 @@ fetchCountries(name)
       .join('')
     return markup
   }
+
